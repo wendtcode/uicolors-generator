@@ -1,6 +1,6 @@
 {
   "name": "uicolors-generator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "vitest && tsc && vite build"
   },
   "dependencies": {
     "chroma-js": "^2.4.2"
