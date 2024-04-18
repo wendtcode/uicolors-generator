@@ -788,18 +788,16 @@ const defaultFamilies = [
 export function getTailwindColors(
   primaryColor: string,
   {
-    whiteColor = "#ffffff",
-    blackColor = "#000000",
+    whiteColor,
+    blackColor,
     asHex = false,
+    includeDefault = false,
   }: {
     whiteColor?: string;
     blackColor?: string;
     asHex?: boolean;
-  } = {
-    whiteColor: "#ffffff",
-    blackColor: "#000000",
-    asHex: false,
-  }
+    includeDefault?: boolean;
+  } = {}
 ) {
   const families = defaultFamilies.map((colorShades) => {
     const shades = colorShades.map((shade) => {
@@ -866,7 +864,7 @@ export function getTailwindColors(
     hueDeltaString = hueDelta.toString();
   }
 
-  return family.shades
+  const palette = family.shades
     .map((shade) => {
       let shadeHexcode = shade.hexcode;
       const shadeSaturation =
@@ -886,16 +884,23 @@ export function getTailwindColors(
         root: family.closestShadeLightness.number == shade.number,
       };
     })
-    .reduce(
-      (acc, shade) => {
-        acc[shade.number] = asHex ? shade.hexcode : shade.hsl;
-        return acc;
-      },
-      {
-        white: asHex ? chroma(whiteColor).hex() : getHsl(whiteColor),
-        black: asHex ? chroma(blackColor).hex() : getHsl(blackColor),
-      } as Record<string | number, string>
-    );
+    .reduce((acc, shade) => {
+      if (includeDefault && shade.root) {
+        acc["DEFAULT"] = asHex ? shade.hexcode : shade.hsl;
+      }
+      acc[shade.number] = asHex ? shade.hexcode : shade.hsl;
+      return acc;
+    }, {} as Record<string | number, string>);
+
+  if (blackColor !== undefined) {
+    palette.black = asHex ? chroma(blackColor).hex() : getHsl(blackColor);
+  }
+
+  if (whiteColor !== undefined) {
+    palette.white = asHex ? chroma(whiteColor).hex() : getHsl(whiteColor);
+  }
+
+  return palette;
 }
 
 function getHsl(color: string) {
