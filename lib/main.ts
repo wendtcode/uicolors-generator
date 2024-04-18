@@ -880,7 +880,7 @@ export function getTailwindColors(
       return {
         number: shade.number,
         hexcode: shadeHexcode,
-        hsl: getHsl(shadeHexcode),
+        hsl: getTailwindHsl(shadeHexcode),
         root: family.closestShadeLightness.number == shade.number,
       };
     })
@@ -893,17 +893,21 @@ export function getTailwindColors(
     }, {} as Record<string | number, string>);
 
   if (blackColor !== undefined) {
-    palette.black = asHex ? chroma(blackColor).hex() : getHsl(blackColor);
+    palette.black = asHex
+      ? chroma(blackColor).hex()
+      : getTailwindHsl(blackColor);
   }
 
   if (whiteColor !== undefined) {
-    palette.white = asHex ? chroma(whiteColor).hex() : getHsl(whiteColor);
+    palette.white = asHex
+      ? chroma(whiteColor).hex()
+      : getTailwindHsl(whiteColor);
   }
 
   return palette;
 }
 
-function getHsl(color: string) {
+export function getTailwindHsl(color: string) {
   const hue = Math.round(chroma(color).get("hsl.h")) || 0;
   const saturation = Math.round(chroma(color).get("hsl.s") * 100);
   const lightness = Math.round(chroma(color).get("hsl.l") * 100);

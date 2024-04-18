@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
-import { getTailwindColors } from "./main";
+import { getTailwindColors, getTailwindHsl } from "./main";
 
-test("works", () => {
+test("getTailwindColors", () => {
   expect(getTailwindColors("#ff4f00")).toEqual({
     50: "32deg 100% 96%",
     100: "34deg 100% 91%",
@@ -82,4 +82,8 @@ test("works", () => {
     950: "#461004",
     DEFAULT: "#ff4f00",
   });
+});
+
+test("getTailwindHsl", () => {
+  expect(getTailwindHsl("#ff4f00")).toEqual("19deg 100% 50%");
 });
