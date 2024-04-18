@@ -11,7 +11,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
-    "prepare": "vitest && tsc && vite build"
+    "prepare": "vitest run && tsc && vite build"
   },
   "dependencies": {
     "chroma-js": "^2.4.2"
