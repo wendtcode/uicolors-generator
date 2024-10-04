@@ -40,7 +40,7 @@ console.log(hexPalette);
 // {
 //   50: "#fff6ec",
 //   100: "#ffecd3",
-//   200: "#ffd4a5",å
+//   200: "#ffd4a5",
 //   300: "#ffb56d",
 //   400: "#ff8a32",
 //   500: "#ff690a",
