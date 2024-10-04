@@ -5,7 +5,9 @@ Generate a Tailwind CSS palette from a single color
 ## Install
 
 ```bash
-pnpm add uicolors-generator
+pnpm add uicolors-generator chroma-js
+
+pnpm add -D @types/chroma-js
 ```
 
 ## Usage
