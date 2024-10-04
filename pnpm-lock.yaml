@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  chroma-js:
-    specifier: ^2.4.2
-    version: 2.4.2
-
 devDependencies:
   '@types/chroma-js':
     specifier: ^2.4.4
@@ -16,6 +11,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.3.3
     version: 20.3.3
+  chroma-js:
+    specifier: ^3.1.1
+    version: 3.1.1
   glob:
     specifier: ^10.3.12
     version: 10.3.12
@@ -749,9 +747,9 @@ packages:
       get-func-name: 2.0.2
     dev: true
 
-  /chroma-js@2.4.2:
-    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
-    dev: false
+  /chroma-js@3.1.1:
+    resolution: {integrity: sha512-CGr6w73Gi86142RWqZ1RjED/CyduYw2vMTikQZUvr2jGIihnZlMo/Kzm9rYHWDP2pJc6eebwc8CkX0iteBon+A==}
+    dev: true
 
   /color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
